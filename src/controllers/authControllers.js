@@ -20,7 +20,7 @@ export async function signin(req, res) {
     const {email} = req.body
     const token = uuid()
     const obj = {token}
-
+    
     try {
         await db.query(`UPDATE users SET "token" = $1 WHERE "email" = $2 `, [token, email]);
     res.status(200).send(obj)
