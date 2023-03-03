@@ -38,15 +38,15 @@ export async function getRank(req, res) {
        SELECT
          users.id,
          users.name,
-         COUNT(links.id) AS linksCount,
-         SUM(links.visits) AS visitCount
+         COUNT(links.id) AS "linksCount",
+         SUM(links.visits) AS "visitCount"
        FROM
          users
          JOIN links ON users.id = links.user_id
        GROUP BY
          users.id
        ORDER BY
-         visitCount DESC
+         "visitCount" DESC
        LIMIT
          10;
        `);
