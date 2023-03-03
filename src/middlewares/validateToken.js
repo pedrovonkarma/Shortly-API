@@ -6,9 +6,9 @@ export async function validateToken(req, res, next){
         return res.sendStatus(401)
     }
     const token = authorization?.replace('Bearer ', '');
-    
     try{
-        const mail = await db.query(`SELECT * FROM users WHERE "token" = $1`, [token]);
+        const mail = await db.query(`SELECT * FROM users WHERE token=$1`,[token]);
+        
         if(!mail.rows[0]){
             return res.sendStatus(401)
         }

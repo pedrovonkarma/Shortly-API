@@ -13,7 +13,6 @@ export async function validateUser(req, res, next){
     try{
         const mail = await db.query(`SELECT * FROM users WHERE email = $1`, [req.body.email]);
         if(mail.rows[0]){
-            console.log('a')
             return res.sendStatus(409)
         }
     }catch (error) {

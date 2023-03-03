@@ -21,5 +21,6 @@ export async function validateLogin(req, res, next){
         console.error(error);
         res.sendStatus(500);
     }
+    console.log('aq')
     next()
 }

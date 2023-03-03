@@ -10,7 +10,7 @@ export async function createShort(req, res) {
        id = id.rows[0].max +1
        let userId = await db.query(`SELECT id FROM users WHERE "token" = $1`, [token])
        userId = userId.rows[0].id
-       await db.query(`INSERT INTO links (user_id, url, shorturl) VALUES($1, $2)`, [userId, url, shortUrl]);
+       await db.query(`INSERT INTO links (user_id, url, shorturl) VALUES($1, $2, $3)`, [userId, url, shortUrl]);
        const obj = {id, shortUrl}
     res.status(201).send(obj)
     
